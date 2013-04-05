@@ -18,10 +18,12 @@ Clean the data with https://github.com/romainr/yelp-data-analysis/blob/master/co
 1. Retrieve the data and extract it.
 <pre>
 tar -xvf yelp_phoenix_academic_dataset.tar
-
+</pre>
+<pre>
 cd yelp_phoenix_academic_dataset
-wget convert.py
-
+wget https://raw.github.com/romainr/yelp-data-analysis/master/convert.py
+</pre>
+<pre>
 yelp_phoenix_academic_dataset$ ls
 convert.py notes.txt READ_FIRST-Phoenix_Academic_Dataset_Agreement-3-11-13.pdf yelp_academic_dataset_business.json yelp_academic_dataset_checkin.json yelp_academic_dataset_review.json yelp_academic_dataset_user.json
 </pre>
@@ -57,11 +59,12 @@ ORDER BY review_count DESC
 LIMIT 25
 </pre>
 
-2. **Top 25: coolest businesses**
+2. **Top 25: coolest restaurants**
 <pre>
 SELECT r.business_id, name, SUM(cool) AS coolness
 FROM review r JOIN business b
 ON (r.business_id = b.business_id)
+WHERE categories LIKE '%Restaurants%'
 GROUP BY r.business_id, name
 ORDER BY coolness DESC
 LIMIT 25
