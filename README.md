@@ -1,4 +1,71 @@
-yelp-data-analysis
-==================
+Yelp Data Analysis with Hue
+===========================
 
-Yelp contest data analysis
+Hue (http://cloudera.github.com/hue) can be used for quickly starting up with Hadoop and anlysing data.
+Here the Yelp Dataset challenge provides small sets ideal for starting up.
+
+Watch the video on this blog post!
+
+
+Getting Started
+===============
+Get the dataset from Yelp: https://www.yelp.com/dataset_challenge/
+
+Normalize data
+==============
+Clean the data with https://github.com/romainr/yelp-data-analysis/blob/master/convert.py
+
+1. Retrieve the data and extract it.
+<pre>
+tar -xvf yelp_phoenix_academic_dataset.tar
+
+cd yelp_phoenix_academic_dataset
+wget convert.py
+
+yelp_phoenix_academic_dataset$ ls
+convert.py notes.txt READ_FIRST-Phoenix_Academic_Dataset_Agreement-3-11-13.pdf yelp_academic_dataset_business.json yelp_academic_dataset_checkin.json yelp_academic_dataset_review.json yelp_academic_dataset_user.json
+</pre>
+
+2. Convert it to TSV.
+<pre>
+chmod +x convert.py
+./convert.py
+</pre>
+
+3. The column headers will be printed by the above script.
+<pre>
+[u'city', u'review_count', u'name', u'neighborhoods', u'type', u'business_id', u'full_address', u'state', u'longitude', u'stars', u'latitude', u'open', u'categories']
+[u'funny', u'useful', u'cool', u'user_id', u'review_id', u'text', u'business_id', u'stars', u'date', u'type']
+</pre>
+
+Create Table
+==============
+Create the Hive tables with the 'Create a new table from a file' in the Catalog app or Beeswax 'Tables' tab.
+
+Upload the data files `yelp_academic_dataset_business_clean.json` and `yelp_academic_dataset_review_clean.json`. Hue will then guess the tab separator and then lets you name each column of the tables (use above column headers).
+
+Queries
+=======
+
+Open up Hue's Hive editor named Beeswax and run:
+
+1. **Top 25: business with most of the reviews**
+<pre>
+SELECT name, review_count
+FROM business
+ORDER BY review_count DESC
+LIMIT 25
+</pre>
+
+2. **Top 25: coolest businesses**
+<pre>
+SELECT r.business_id, name, SUM(cool) AS coolness
+FROM review r JOIN business b
+ON (r.business_id = b.business_id)
+GROUP BY r.business_id, name
+ORDER BY coolness DESC
+LIMIT 25
+</pre>
+
+Let your imagination goes!
+
