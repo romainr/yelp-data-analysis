@@ -36,15 +36,15 @@ chmod +x convert.py
 
 3. The column headers will be printed by the above script.
 <pre>
-[u'city', u'review_count', u'name', u'neighborhoods', u'type', u'business_id', u'full_address', u'state', u'longitude', u'stars', u'latitude', u'open', u'categories']
-[u'funny', u'useful', u'cool', u'user_id', u'review_id', u'text', u'business_id', u'stars', u'date', u'type']
+["city", "review_count", "name", "neighborhoods", "type", "business_id", "full_address", "state", "longitude", "stars", "latitude", "open", "categories"]
+["funny", "useful", "cool", "user_id", "review_id", "text", "business_id", "stars", "date", "type"]
 </pre>
 
 Create Table
 ==============
 Create the Hive tables with the 'Create a new table from a file' in the Catalog app or Beeswax 'Tables' tab.
 
-Upload the data files `yelp_academic_dataset_business_clean.json` and `yelp_academic_dataset_review_clean.json`. Hue will then guess the tab separator and then lets you name each column of the tables (use above column headers).
+Upload the data files `yelp_academic_dataset_business_clean.json` and `yelp_academic_dataset_review_clean.json`. Hue will then guess the tab separator and then lets you name each column of the tables (use above column headers and paste them directly if you use Hue 2.3).
 
 Queries
 =======

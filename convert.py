@@ -31,7 +31,7 @@ for line in open('yelp_academic_dataset_business.json'):
   business = map(unicode, business_json.values())
   business_clean.write(u'\t'.join(business).replace('\n', ' ').encode('utf-8') + '\n')
 
-print business_json.keys()
+print json.dumps(business_json.keys())
 
 
 review_clean = open('yelp_academic_dataset_review_clean.json', 'w+')
@@ -43,4 +43,4 @@ for line in open('yelp_academic_dataset_review.json'):
   review = map(unicode, review_json.values())  
   review_clean.write(u'\t'.join(review).replace('\n', ' ').encode('utf-8') + '\n')
 
-print review_json_votes.keys() + review_json.keys()[1:]
+print json.dumps(review_json_votes.keys() + review_json.keys()[1:])
