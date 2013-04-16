@@ -70,5 +70,5 @@ ORDER BY coolness DESC
 LIMIT 25
 </pre>
 
-Let your imagination goes!
+Let your imagination run!
 
