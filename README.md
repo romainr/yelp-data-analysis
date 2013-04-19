@@ -4,7 +4,7 @@ Yelp Data Analysis with Hue
 Hue (http://cloudera.github.com/hue) can be used for quickly starting up with Hadoop and anlysing data.
 Here the Yelp Dataset challenge provides small sets ideal for starting up.
 
-Watch the video on this blog post!
+Watch the video on this [blog post](http://blog.cloudera.com/blog/2013/04/demo-analyzing-data-with-hue-and-hive/)!
 
 
 Getting Started
